@@ -4,13 +4,15 @@ import sys
 
 
 dataset = "./data/data-1-sample.txt"
+#dataset = "./data/data-1.txt"
 
 conf = (SparkConf()
-		.setAppName("Anis Hamroun")           ##change app name to your username
-		#.setMaster("spark://128.0.1.1:7077")
-		#.set("spark.cores.max", "2")  ##dont be too greedy ;) # Doesn't work unless increased
-		#.set("spark.rdd.compress", "true")
-		#.set("spark.broadcast.compress", "true")
+		.setAppName("Hamroun")           #Echange app name to your username
+#		.setMaster("spark://128.214.48.227:7077")
+#		.set("spark.cores.max", "10")  ##dont be too greedy ;)
+#		.set("spark.rdd.compress", "true")
+#		.set("spark.broadcast.compress", "true")
+
 	   )
 sc = SparkContext(conf=conf)
 
