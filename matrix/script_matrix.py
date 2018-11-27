@@ -12,13 +12,19 @@ dataset = "data/data2.txt"
 output_file = "./matrix_output.txt"
 
 conf = (SparkConf()
-        .setAppName("Hamroun"))
+		.setAppName("Hamroun")           #Echange app name to your username
+#		.setMaster("spark://128.214.48.227:7077")
+#		.set("spark.cores.max", "10")  ##dont be too greedy ;)
+#		.set("spark.rdd.compress", "true")
+#		.set("spark.broadcast.compress", "true")
+
+	   )
 sc = SparkContext(conf=conf)
 
 #Data Loading
 raw_matrix_file = sc.textFile(dataset)
 #Compute A
-A = raw_matrix_file.map(lambda row: row.split(" ")).map(lambda row: [float(element) for element in
+A = raw_matrix_file.map(lambda row: row.split()).map(lambda row: [float(element) for element in
 row])
 #Compute AT_A 
 AT_A = A.map(lambda row: np.outer(row, row)).reduce(lambda x,y : np.array(x) + np.array(y))
